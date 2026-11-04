@@ -1,62 +1,21 @@
 <!doctype html>
-<html lang="sq">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#171717">
-<title>SQE COIN</title>
+<html lang="sq"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111111"><link rel="manifest" href="manifest.webmanifest"><title>SQE COIN</title>
 <style>
-:root{--red:#b51f2b;--gold:#e3b341;--bg:#101010;--panel:#1d1d1d;--muted:#bdbdbd}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#260b0e,#101010 48%,#171717);color:#fff;font:16px system-ui,Arial,sans-serif;min-height:100vh}
-main{max-width:520px;margin:auto;padding:22px 16px 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{display:flex;align-items:center;gap:10px}.eagle{width:48px;height:48px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:25px}
-h1{font-size:23px;margin:0;letter-spacing:1px}.sub{color:#d5c7c7;font-size:12px}
-select{background:#252525;color:white;border:1px solid #555;border-radius:10px;padding:9px}
-.hero{margin:24px 0 16px;padding:22px;border:1px solid #704047;border-radius:20px;background:linear-gradient(135deg,#4a1018,#211719)}
-.small{color:#e7c8c8;font-size:13px}.balance{font-size:42px;font-weight:800;color:var(--gold);margin:4px 0}.unit{font-size:14px;color:#fff}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{background:var(--panel);border:1px solid #383838;border-radius:16px;padding:16px}
-.card h2{font-size:16px;margin:0 0 8px}.card p{font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.45}
-button{border:0;border-radius:12px;background:var(--red);color:#fff;font-weight:700;padding:12px 14px;width:100%;cursor:pointer}
-button.gold{background:var(--gold);color:#171717}.wide{margin-top:12px}.notice{margin-top:16px;padding:13px;border-radius:12px;background:#26221a;color:#e9d8a7;font-size:12px;line-height:1.5}
-#feedback{min-height:22px;color:var(--gold);font-size:13px;margin-top:10px}.footer{margin-top:20px;color:#aaa;font-size:11px;text-align:center}
-@media(max-width:360px){.grid{grid-template-columns:1fr}.balance{font-size:36px}}
-</style>
-</head>
-<body>
-<main>
- <div class="top">
-  <div class="brand"><div class="eagle">🦅</div><div><h1>SQE COIN</h1><div class="sub" data-i="tagline">Luaj • Mëso • Mblidh pikë</div></div></div>
-  <select id="lang" aria-label="Language"><option value="sq">Shqip</option><option value="en">English</option><option value="fr">Français</option></select>
- </div>
- <section class="hero">
-  <div class="small" data-i="balance">Bilanci yt i pikëve</div>
-  <div class="balance"><span id="points">0</span> <span class="unit">SQE</span></div>
-  <div class="small" data-i="demo">Pikë prove në këtë pajisje</div>
- </section>
- <div class="grid">
-  <section class="card"><h2 data-i="game">🎮 Loja e shpejtë</h2><p data-i="gameDesc">Shtyp butonin dhe fito 10 pikë prove.</p><button id="play" data-i="play">Luaj +10 SQE</button></section>
-  <section class="card"><h2 data-i="daily">🎁 Shpërblimi ditor</h2><p data-i="dailyDesc">Merr 50 pikë prove një herë në ditë.</p><button class="gold" id="dailyBtn" data-i="claim">Merr shpërblimin</button></section>
- </div>
- <section class="card wide"><h2 data-i="quiz">🧠 Sfida e diturisë</h2><p data-i="question">Cilat janë ngjyrat e flamurit shqiptar?</p><div class="grid">
- <button class="answer" data-answer="wrong" data-i="wrong">Blu dhe e bardhë</button><button class="answer gold" data-answer="right" data-i="right">E kuqe dhe e zezë</button>
- </div><div id="feedback" aria-live="polite"></div></section>
- <div class="notice" data-i="disclaimer">Ky është prototip demonstrues. SQE këtu janë vetëm pikë lokale prove: nuk janë kriptomonedhë, nuk kanë vlerë monetare dhe nuk mund të tërhiqen ose transferohen.</div>
- <div class="footer" data-i="footer">Version demonstrues • SQE COIN</div>
-</main>
-<script>
-const translations={
-sq:{tagline:"Luaj • Mëso • Mblidh pikë",balance:"Bilanci yt i pikëve",demo:"Pikë prove në këtë pajisje",game:"🎮 Loja e shpejtë",gameDesc:"Shtyp butonin dhe fito 10 pikë prove.",play:"Luaj +10 SQE",daily:"🎁 Shpërblimi ditor",dailyDesc:"Merr 50 pikë prove një herë në ditë.",claim:"Merr shpërblimin",claimed:"U mor sot",quiz:"🧠 Sfida e diturisë",question:"Cilat janë ngjyrat e flamurit shqiptar?",wrong:"Blu dhe e bardhë",right:"E kuqe dhe e zezë",correct:"Saktë! Fitove 20 pikë prove.",incorrect:"Provo përsëri!",disclaimer:"Ky është prototip demonstrues. SQE këtu janë vetëm pikë lokale prove: nuk janë kriptomonedhë, nuk kanë vlerë monetare dhe nuk mund të tërhiqen ose transferohen.",footer:"Version demonstrues • SQE COIN",earned:"Fitove 10 pikë prove!" ,already:"Shpërblimi ditor është marrë."},
-en:{tagline:"Play • Learn • Collect points",balance:"Your points balance",demo:"Demo points on this device",game:"🎮 Quick game",gameDesc:"Tap the button and earn 10 demo points.",play:"Play +10 SQE",daily:"🎁 Daily reward",dailyDesc:"Claim 50 demo points once per day.",claim:"Claim reward",claimed:"Claimed today",quiz:"🧠 Knowledge challenge",question:"What are the colors of the Albanian flag?",wrong:"Blue and white",right:"Red and black",correct:"Correct! You earned 20 demo points.",incorrect:"Try again!",disclaimer:"This is a demonstration prototype. SQE here are local demo points only: they are not cryptocurrency, have no monetary value, and cannot be withdrawn or transferred.",footer:"Demo version • SQE COIN",earned:"You earned 10 demo points!",already:"Today's reward has already been claimed."},
-fr:{tagline:"Jouer • Apprendre • Gagner des points",balance:"Votre solde de points",demo:"Points de démonstration sur cet appareil",game:"🎮 Jeu rapide",gameDesc:"Appuyez sur le bouton pour gagner 10 points démo.",play:"Jouer +10 SQE",daily:"🎁 Récompense quotidienne",dailyDesc:"Recevez 50 points démo une fois par jour.",claim:"Réclamer",claimed:"Déjà réclamée",quiz:"🧠 Défi de connaissances",question:"Quelles sont les couleurs du drapeau albanais ?",wrong:"Bleu et blanc",right:"Rouge et noir",correct:"Exact ! Vous avez gagné 20 points démo.",incorrect:"Réessayez !",disclaimer:"Ceci est un prototype de démonstration. Les SQE sont uniquement des points locaux de démonstration : ce n'est pas une cryptomonnaie, ils n'ont aucune valeur monétaire et ne peuvent être retirés ni transférés.",footer:"Version démo • SQE COIN",earned:"Vous avez gagné 10 points démo !",already:"La récompense du jour a déjà été réclamée."}
-};
-let points=Number(localStorage.getItem("sqe_points")||0);
-const $=id=>document.getElementById(id);
-function render(){ $("points").textContent=points; const t=translations[$("lang").value]; $("dailyBtn").textContent=localStorage.getItem("sqe_daily")===new Date().toDateString()?t.claimed:t.claim; }
-function add(n){points+=n;localStorage.setItem("sqe_points",points);render();}
-$("lang").addEventListener("change",()=>{const t=translations[$("lang").value];document.querySelectorAll("[data-i]").forEach(el=>{const k=el.dataset.i;if(t[k])el.textContent=t[k];});$("feedback").textContent="";render();});
-$("play").addEventListener("click",()=>{add(10);$("feedback").textContent=translations[$("lang").value].earned;});
-$("dailyBtn").addEventListener("click",()=>{const t=translations[$("lang").value];const today=new Date().toDateString();if(localStorage.getItem("sqe_daily")===today){$("feedback").textContent=t.already;return;}localStorage.setItem("sqe_daily",today);add(50);render();$("feedback").textContent="+50 SQE";});
-document.querySelectorAll(".answer").forEach(b=>b.addEventListener("click",()=>{const t=translations[$("lang").value];if(b.dataset.answer==="right"){add(20);$("feedback").textContent=t.correct;}else{$("feedback").textContent=t.incorrect;}}));
-render();
-</script>
-</body></html>
+body{margin:0;background:#101010;color:#f7f3e8;font-family:system-ui,sans-serif}main{max-width:520px;margin:auto;padding:22px}header{text-align:center;padding:20px}.eagle{font-size:52px}h1{color:#e7bd54}.panel{background:#1d1d1d;border:1px solid #39342a;border-radius:16px;padding:18px;margin:14px 0}.points{text-align:center;font-size:40px;color:#e7bd54;font-weight:bold}button,select{width:100%;padding:14px;margin-top:10px;border:0;border-radius:12px;font-size:16px;font-weight:bold}button{background:#d5a936;color:#17130a}.secondary{background:#333;color:white}.row{display:flex;gap:10px}.note{font-size:12px;color:#aaa;line-height:1.5}
+</style></head><body><main>
+<header><div class="eagle">🦅</div><h1>SQE COIN</h1><p>Demo app · Solana planned for the future</p></header>
+<section class="panel"><select id="lang"><option value="sq">Shqip</option><option value="en">English</option><option value="fr">Français</option></select><p id="balanceLabel">Pikët demo</p><div class="points" id="points">0 SQE</div></section>
+<section class="panel"><h2 id="playTitle">Lojë e shpejtë</h2><p id="playDesc">Shtyp për 10 pikë demo.</p><button id="play">Luaj +10</button></section>
+<section class="panel"><h2 id="dailyTitle">Shpërblimi ditor</h2><p id="dailyDesc">Merr 50 pikë demo një herë në ditë.</p><button id="daily">Merr +50</button></section>
+<section class="panel"><h2 id="quizTitle">Kuiz</h2><p id="question">Cili blockchain është planifikuar?</p><div class="row"><button class="secondary answer" data-a="0">Ethereum</button><button class="secondary answer" data-a="1">Solana</button></div></section><p id="message"></p>
+<p class="note">Ky është vetëm prototip lokal. Pikët nuk kanë vlerë monetare. Nuk ka portofol, transaksione blockchain, llogari, server ose tërheqje. Mos vendos kurrë frazën sekrete ose çelësin privat.</p>
+</main><script>
+let pts=+(localStorage.sqe_points||0),$=id=>document.getElementById(id),lang='sq';
+const words={sq:['Pikët demo','Lojë e shpejtë','Shtyp për 10 pikë demo.','Luaj +10','Shpërblimi ditor','Merr 50 pikë demo një herë në ditë.','Merr +50','Kuiz','Cili blockchain është planifikuar?','Saktë! +20 pikë demo.','Provo përsëri.'],en:['Demo points','Quick game','Tap for 10 demo points.','Play +10','Daily reward','Claim 50 demo points once per day.','Claim +50','Quiz','Which blockchain is planned?','Correct! +20 demo points.','Try again.'],fr:['Points démo','Jeu rapide','Appuyez pour 10 points démo.','Jouer +10','Récompense quotidienne','Recevez 50 points démo une fois par jour.','Recevoir +50','Quiz','Quelle blockchain est prévue ?','Correct ! +20 points démo.','Réessayez.']};
+function update(){ $('points').textContent=pts+' SQE';localStorage.sqe_points=pts;}
+function setLang(v){lang=v;let w=words[v];['balanceLabel','playTitle','playDesc','play','dailyTitle','dailyDesc','daily','quizTitle','question'].forEach((id,i)=>$(id).textContent=w[i]);}
+$('lang').onchange=e=>setLang(e.target.value);$('play').onclick=()=>{pts+=10;update();};
+$('daily').onclick=()=>{let d=new Date().toISOString().slice(0,10);if(localStorage.sqe_daily===d){$('message').textContent='Already claimed today.';return;}localStorage.sqe_daily=d;pts+=50;update();};
+document.querySelectorAll('.answer').forEach(b=>b.onclick=()=>{if(b.dataset.a==='1'){pts+=20;update();$('message').textContent=words[lang][9];}else $('message').textContent=words[lang][10];});
+setLang(lang);update();if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script></body></html>
